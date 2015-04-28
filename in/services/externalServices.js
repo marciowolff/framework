@@ -2291,12 +2291,28 @@ external.constant("servicesConfig", {
                                                     {
                                                         style: 'inline col-md-7',
                                                         campos: [
-                                                            {nameTpl: 'input', type: 'hidden', name:'catalogo', id: 'catalogo', savetype: 'number', required: false, size: 0, inputSize: 0, labelSize: 0},
+                                                            {nameTpl: 'input', type: 'hidden', name:'catalogo', id: 'catalogo', savetype: 'number', required: false, hidden: false, size: 0, inputSize: 0, labelSize: 0},
                                                             {nameTpl: 'input', type: 'hidden', name:'condicao', id: 'condicao', savetype: 'number', required: false, size: 0, inputSize: 0, labelSize: 0},
                                                             {nameTpl: 'input', type: 'hidden', name:'tipoPremio', id: 'tipoPremio', required: false, size: 0, inputSize: 0, labelSize: 0},
                                                             {nameTpl: 'input', type: 'hidden', name:'codpremio', id: 'codpremio', savetype: 'number', required: false, size: 0, inputSize: 0, labelSize: 0},
                                                             {nameTpl: 'input', type: 'hidden', name:'pergunta', id: 'pergunta', required: false, size: 0, inputSize: 0, labelSize: 0},
-                                                            {nameTpl: 'select', type: 'select', name:'cartao_pre_pago', id: 'cartao_pre_pago', savetype: 'number', addParamsResult: true, /*interaction: true,*/ size: 12, inputSize: 7, labelSize: 5,},
+                                                            {nameTpl: 'select', type: 'select', name:'cartao_pre_pago', id: 'cartao_pre_pago', savetype: 'number', addParamsResult: true, /*interaction: true,*/ size: 12, inputSize: 7, labelSize: 5,
+                                                                clearResult: {event: 'change', fields: ['taxa_resgate', 'disponivel', 'saldo_atual']},
+                                                                service: {
+                                                                   events: [
+                                                                        {objresult: 'load', event: 'change', edit: true, //errordefault: true, 
+                                                                            urls: [
+                                                                                {url: 'saldodisponivel/find/', parameter: 'idUsuario'},
+                                                                                {url: '/conta/', parameterform: true, parameter: 'cartao_pre_pago'},
+                                                                                {url: '/premio/', parameterform: true, parameter: 'codpremio'},
+                                                                                {url: '/tipopremio/', parameterform: true, parameter: 'tipoPremio'},
+                                                                                {url: '/condicao/', parameterform: true, parameter: 'condicao'},
+                                                                                {url: '/catalogo/', parameterform: true, parameter: 'catalogo'},
+                                                                            ]
+                                                                        },
+                                                                    ]                                                                                                                                            
+                                                                },
+                                                            },
                                                         ]
                                                     },
                                                     {
@@ -2379,7 +2395,7 @@ external.constant("servicesConfig", {
                                                             {nameTpl: 'input', classe:'inputtext', type: 'pontos', name:'qtdade', id: 'qtdade', savetype: 'number', addParamsResult: true, disabled: false, size: 10, inputSize: 6, labelSize: 6,
                                                                 obs: 'Digite sem casas decimais. Ex.: 1000', obsSize: 12, obsLabelSize: 6, 
                                                                 //LIMPAR OS CAMPOS QUANDO TROCAR O VALOR
-                                                                clearResult: ['qtpon', 'qtpremio_total', 'flagprepago', 'flagcontacorrente', 'flagvoucher', 'flagrecarga']
+                                                                clearResult: {event: 'lineValue', fields: ['qtpon', 'qtpremio_total', 'flagprepago', 'flagcontacorrente', 'flagvoucher', 'flagrecarga']},
                                                             },
                                                             {nameTpl: 'button', type: 'button', name:'calcularpontoscc', id: 'calcularpontoscc', size: 2, ignoreHidden: true, inputSize: 11, title: 'Calcular', visibled: true, disabled: false, classe:'btn-primary',
                                                                 information: 'Antes de calcular insira a quantidade de pontos que deseja resgatar.',                                                                

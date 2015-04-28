@@ -1158,34 +1158,6 @@ directives.directive('serviceCall', ['callServiceField', '$http', '$timeout', 'f
 			}
 			
 			$scope.$watch('serviceCall.lineValue', function(){
-				//LIMPAR RESULTADO
-				if($scope.content.clearResult && !$scope.content.noClearResult){
-					for(var i=0; i<$scope.content.clearResult.length; i++){
-						var fieldClear = $scope.content.clearResult[i];
-						defaultServices.loopFiedsForm($scope.serviceForm, function(data){
-							if(data.name == fieldClear){
-								data.value = '';
-
-								switch(data.type){
-									case 'radio':
-										data.lineValue = false;
-										data.checked = false;
-										break;
-
-									case 'checkbox':
-										data.lineValue = false;
-										data.checked = false;
-										break;
-
-									default:
-										data.lineValue = '';
-										break;
-								}							
-							}
-						});
-					}
-				}
-
 				if($scope.content.lineValue){					
 					if($scope.content.lineValue.length > 0){
 
@@ -1274,8 +1246,50 @@ directives.directive('serviceCall', ['callServiceField', '$http', '$timeout', 'f
 					});
 				}
 			}
+
+			if($scope.content.clearResult){
+				var fnClearResult = function(){
+					if(!$scope.content.noClearResult){
+						for(var i=0; i<$scope.content.clearResult.fields.length; i++){
+							var fieldClear = $scope.content.clearResult.fields[i];
+							defaultServices.loopFiedsForm($scope.serviceForm, function(data){
+								if(data.name == fieldClear){
+									data.value = '';
+
+									switch(data.type){
+										case 'radio':
+											data.lineValue = false;
+											data.checked = false;
+											break;
+
+										case 'checkbox':
+											data.lineValue = false;
+											data.checked = false;
+											break;
+
+										default:
+											data.lineValue = '';
+											break;
+									}							
+								}
+							});
+						}
+					}
+				};
+
+				if($scope.content.clearResult.event == 'lineValue'){
+					$scope.$watch('serviceCall.lineValue', function(){
+						//LIMPAR RESULTADO
+						fnClearResult();						
+					});
+				}else{
+					$elm.bind($scope.content.clearResult.event, function(){
+						fnClearResult();
+					});
+				}
+			}
 			
-			$elm.bind('focusout', function(){				
+			$elm.bind('focusout', function(){
 				//COMPARAR VALORES
 				if($scope.content.compareField){
 					var fieldCompare = $scope.content.compareField;

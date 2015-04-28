@@ -632,7 +632,12 @@ app.factory('linkLocation', ['redirect', 'defaultServices', 'modalCall', '$rootS
 app.factory('modalCall', ['$rootScope', 'baseUrls', '$modal', function ($rootScope, baseUrls, $modal) {
   var modalCall = {
     open: function(scopeForm, refModal){
-      var scope = angular.copy(scopeForm);
+      //var scope = angular.copy(scopeForm);
+      var scope = {
+        modalDetail: scopeForm.formDetail,
+        modalScope: scopeForm.modalScope
+      };
+
       angular.forEach($rootScope.site.layout.modals, function(index, value){
         if(value == refModal){
           scope.modal = index;         

@@ -635,7 +635,6 @@ external.factory('defaultServices', ['$rootScope', '$resource', '$window', '$loc
                             //CAPTURAR VALOR DE UM CAMPO DO FORMULARIO
                             service.form = (service.form ? service.form : obj.form ? obj.form : obj);
                             filter = defaultServices.captureForm(service.form, url.parameter, (obj.form ? obj.form : obj), service.conditional, '');
-                            
                             if(filter.response){
                                 var form = (obj.form ? obj.form : obj);
                                 form.msgs = filter;
@@ -1049,7 +1048,9 @@ external.factory('defaultServices', ['$rootScope', '$resource', '$window', '$loc
                                 if(filterCampo.type =='date' && filterCampo.clearmask){
                                     filterCampo.lineValue = formatField.date(filterCampo.lineValue, false, true);
                                 }else{
-                                    filterCampo = defaultServices.clearfield(filterCampo);                                    
+                                    if(!filterCampo.lineValue.id){
+                                        filterCampo = defaultServices.clearfield(filterCampo);                                        
+                                    }
                                 }
 
                                 if(dataconstruct){
