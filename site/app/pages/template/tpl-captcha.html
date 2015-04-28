@@ -1,0 +1,6 @@
+
+<span ng-hide="content.labelHide" class="control-label" ng-class="{'col-sm-{{content.labelSize}}' : content.labelSize, '{{content.classLabel}}': content.classLabel}">{{content.labelName}}</span>
+<div class="checkbox" ng-class="{'col-sm-{{content.inputSize}}' : content.inputSize}" ng-hide="content.inputHide">
+	<div name="{{content.name}}" id="{{content.id}}" required="{{content.required}}" re-captcha ng-model="content.captcha"></div>	
+</div>
+<small ng-if="content.obsSize" class="help-block" ng-class="{'col-sm-{{content.obsSize}}' : content.obsSize}">{{content.obs}}</small>

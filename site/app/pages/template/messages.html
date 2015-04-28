@@ -1,0 +1,14 @@
+<ul ng-show="msgs" class="alert" ng-class="{'col-md-{{content.msgsSize}}' : content.msgsSize} && addclass(msgs.response.status)" >
+  <li ng-repeat="msg in msgs.response.messages.message">{{msg.text}}</li>
+
+
+  <li ng-if="msgs.btns" class="btns-msg">
+	<a href="" ng-repeat="btns in msgs.btns" ng-if="!btns.openmodal" ng-click="location(btns)" class="btn" ng-class="btns.classe">
+		{{btns.title}}
+	</a>
+
+	<a href="" ng-repeat="btns in msgs.btns" ng-if="btns.openmodal" btn-openmodal modal-scope="btns" class="btn" ng-class="btns.classe">
+		{{btns.title}}
+	</a>
+  </li>
+</ul>

@@ -1,0 +1,36 @@
+<form id="form" class="form panel panel-default" name="content.tplform" ng-class="content.classform">
+	<header ng-if="content.header" ng-class="content.header.classe">
+		<span class="icon" ng-class="content.header.title.icon"></span>
+		<h1 ng-class="content.header.title.classe"><span ng-bind-html="content.header.title.text"></span></h1>
+		<p ng-if="content.header.title.description" ng-class="content.header.title.description.classe" ng-bind-html="content.header.title.description.text"></p>
+	</header>
+	
+	<div ng-if="!content.msgbottom" messages msgs="content.msgs"></div>
+	<fieldset ng-repeat="fields in content.detail" class="panel-body" ng-class="fields.classe" insert-form-of-partial="fields">
+		<legend ng-if="fields.title.text" ng-class="fields.title.classe" ng-bind-html="fields.title.text"></legend>
+		<p ng-if="fields.title.description" ng-class="fields.title.description.classe" link-bind="fields.title.description.text" ng-bind-html="fields.title.description.text"></p>
+		
+		<div ng-repeat='linha in fields.form' ng-class="{'form-{{linha.style}}' : linha.style}">
+			<div ng-repeat='campo in linha.campos | hideShow' class="form-group" ng-class="{'{{campo.classe}}': campo.classe && campo.nameTpl != 'button', 'col-md-{{campo.size}}' : campo.size}">
+				<span insert-field="campo" edit-field="content"></span>
+			</div>
+		</div>
+
+		<div ng-if="content.msgbottom" messages msgs="content.msgs"></div>
+	</fieldset>
+
+
+	<footer ng-if="!content.modal">	
+
+		<div ng-repeat="btns in content.btns" ng-if="!btn.remove" view-conditinal="btns" view-line="content.detail">
+			<btn class="btn" ng-class="btns.classe" ng-if="!btns.openmodal && !btns.type && !btns.hide" ng-show="btns.visibled" ng-click="location(btns, content)" ng-disabled="btns.disabled">{{btns.title}}</btn>
+
+			<btn ng-if="btns.openmodal && !btns.type && !btns.hide" btn-openmodal modal-scope="btns" modal-detail="content" class="btn" ng-class="btns.classe" ng-show="btns.visibled" ng-click="openmodal(btns, content)" ng-disabled="btns.disabled">
+				{{btns.title}}
+			</btn>	
+
+			<button type="submit" class="btn" ng-class="btns.classe" ng-if="btns.type && !btns.hide" ng-show="btns.visibled" ng-click="location(btns, content)" ng-disabled="btns.disabled">{{btns.title}}</button>
+		</div>
+		
+	</footer>
+</form>

@@ -1,0 +1,42 @@
+
+<div ng-class="site.layout.type == 'full' ? '' : 'container'">
+
+  <aside ng-if="site.layout.type == 'full'" id='nav-left'>
+    <button id="showHideMenu" type="button" class="btn btn-icon" ng-class="{'active': menuShow != true}" ng-click="showhideMenu()">
+      <span class="fa" ng-class="{'fa-outdent': menuShow == true, 'fa-indent': menuShow != true}"></span>
+    </button>
+  </aside>
+
+
+   <a id="logo" href="" ng-click='navlocation({url: "index", refhref:"index"})'>
+     <img insert-img="site.layout.header.logindark ? site.logo.dark : site.logo.img" insert-content="site.logo" alt="{{site.logo.title}}" class="logo"/>
+   </a>
+  
+
+  <img ng-if="site.logoApp" insert-img="site.logoApp.img" insert-content="site.logo" id="logoApp" alt="{{site.logoApp.title}}" class="logo"/>  
+  
+  <div ng-if="pageCurrent.header.login && !user" ng-repeat="login in pageCurrent.header.login" tpl-insert='login'></div>  
+
+  <aside ng-if="user" id="dataUser" >
+    <p>Bem vindo (a) <strong class="user">{{user.apelido}}</strong></p>
+    
+    <div points points-user="user"></div>
+
+    <div tpl-insert='pageCurrent.header.user'></div>
+  </aside>
+
+  <nav ng-if="authNav(site.layout.navauth)" id="navApp">
+    <ul class="nav nav-pills">
+      <li ng-repeat='nav in site.layout.nav | closenav:nav' ng-class="nav.classe && activeNav(nav)">
+        <a href="" ng-if="!nav.openmodal" ng-click="navlocation(nav)" title="{{nav.title}}" data-openmodal='{{nav.openmodal}}'>
+          {{nav.title}}
+        </a>
+
+        <a href="" ng-if="nav.openmodal" btn-openmodal modal-scope="nav">
+          {{nav.title}}
+        </a>
+      </li>      
+    </ul>
+  </nav>
+
+</div>

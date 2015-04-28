@@ -1,0 +1,11 @@
+
+<label ng-if="!content.labelHide" class="control-label" ng-class="{'col-sm-{{content.labelSize}}' : content.labelSize, '{{content.classLabel}}': content.classLabel}" for="{{content.name}}">{{content.labelName}} <sub ng-if="content.required && !content.placeholder" class="requiredStyle">*</sub></label>
+
+<div ng-class="{'col-sm-{{content.inputSize}}' : content.inputSize}" ng-if="!content.inputHide">
+	<textarea class="form-control" ng-class="{'ng-dirty': content.invalid }" placeholder="{{content.placeholder}}" name="{{content.name}}" id="{{content.id}}" ng-required="{{content.required}}" rows="{{content.row}}" ng-model="content.lineValue" maxlength="{{content.maxlength}}" ng-disabled="{{content.disabled}}"></textarea>
+	<span ng-if="content.information" class="information">
+		<small class="icon info">i</small>
+		<span>{{content.information}}</span>
+	</span>
+</div>
+<small ng-if="content.obsSize" ng-class="{'col-sm-{{content.obsSize}}' : content.obsSize}">{{content.obs}}</small>

@@ -1,0 +1,13 @@
+<div dropdown>
+  	<span ng-if="content.labelTitle">{{content.labelTitle}}</span>
+  	<button type="button" class="user dropdown-toggle" ng-disabled="disabled">
+    	{{content.title}} <span class="caret"></span>
+  	</button>
+  	<ul class="dropdown-menu" role="menu">
+    	<li ng-repeat="link in content.menu" ng-class="activeNav(link)">
+    		<a ng-if="!link.openmodal" href="" ng-click='location(link)' ng-class="link.classe">{{link.title}}</a>
+			<a ng-if="link.openmodal" btn-openmodal modal-scope="link" href="" ng-class="link.classe">{{link.title}}</a>
+    	</li>
+	</ul>
+</div>
+

@@ -1,0 +1,46 @@
+
+<section class="panel panel-defaul tablePanel">
+	<!-- Default panel contents -->
+	<header ng-if="content.header" class="panel-heading">
+
+		<h3 ng-if="tplInsert.header.title">{{tplInsert.header.title}}</h3>
+
+
+	    <div ng-if="content.header.btn" class="btns">
+		    <a href="" ng-repeat="btns in content.header.btn" ng-if="!btns.openmodal" ng-click="location(btns)" class="btn" ng-class="btns.classe">
+				{{btns.title}}
+			</a>
+
+			<a href="" ng-repeat="btns in content.header.btn" ng-if="btns.openmodal" btn-openmodal modal-scope="btns" class="btn" ng-class="btns.classe">
+				{{btns.title}}
+			</a>
+		</div>
+
+		<form ng-if="content.header.filter" ng-show="content.header.filter.show" class="filter" name="content.tplform" ng-class="{'breadcrumbShow':content.header.filter.breadcrumb.visibled}">
+
+			<fieldset ng-repeat="filters in content.header.filter.detail">
+				<div ng-repeat='linha in filters.form' ng-class="{'form-{{linha.style}}' : linha.style}">
+					<div ng-repeat='campo in linha.campos' class="form-group" ng-class="{'col-md-{{campo.size}}' : campo.size}">
+						<span insert-field="campo" edit-field="content"></span>
+					</div>
+				</div>
+				<a href="" ng-show="filters.btn.visibled" ng-click="location(filters.btn, content)" class="btn" ng-class="filters.btn.classe" ng-disabled="filters.btn.disabled">
+					{{filters.btn.title}}
+				</a>				
+			</fieldset>
+
+			<div ng-if="content.header.filter.breadcrumb.visibled && content.result" breadcrumb-result="content.header.filter" conditional="content.table.result" class="breadcrumb">
+				<strong>{{content.header.filter.breadcrumb.txt}}</strong> 
+				<span ng-bind-html="content.header.filter.breadcrumb.result"></span>
+			</div>
+	    </form>
+	</header>
+	<div tpl-insert="content.table" tpl-insert-addfilter="content.header.filter"></div>	
+
+	<footer ng-if="content.footer" ng-class="content.footer.classe">		
+		<h4 ng-if="content.footer.title">{{content.footer.title}}</h4>
+		<div ng-if="content.footer.content" tpl-insert="content.footer.content" tpl-conditional="content.table"></div>
+
+		<div class="pagination-content" ng-if="content.footer.pagination" tpl-insert="content.footer.pagination" tpl-conditional="content.table"></div>
+	</footr>
+</section>

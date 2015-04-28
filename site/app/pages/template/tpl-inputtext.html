@@ -1,0 +1,14 @@
+<label ng-if="!content.labelHide" class="control-label" ng-class="{'col-sm-{{content.labelSize}}': content.labelSize, '{{content.classLabel}}': content.classLabel, 'ng-dirty': content.invalid, 'modified' : content.modified}" for="{{content.name}}">{{content.labelName}} <sub ng-if="content.required && !content.placeholder" class="requiredStyle">*</sub></label>
+<div ng-class="{'col-sm-{{content.inputSize}}' : content.inputSize, 'ng-dirty': content.invalid, 'modified' : content.modified}" ng-if="!content.inputHide" service-call="content" service-form="editField">
+	<p id="{{content.id}}" format-date="content" ng-class="content.classeContent"> 
+		<span link-bind="content.lineValue" ng-bind-html="content.lineValue"></span>
+		<span ng-if="content.information && content.lineValue" class="information">
+			<small class="icon info">i</small>
+			<span>{{content.information}}</span>
+		</span>
+	</p>
+	
+	<a href="" ng-if="content.btns" ng-repeat="btn in content.btns" ng-class="btn.classe" title="{{btn.title}}" ng-click="location(btn)">
+		{{btn.title}}
+	</a>
+</div>

@@ -1,0 +1,19 @@
+<form class="panel panel-default box box-default" name='tplInsert.scope.form' novalidate>
+ 	<fieldset class="panel-body form-inline">
+ 		<legend>Login</legend>
+
+ 		<p>Insira seu login e sua senha para entrar.</p>
+
+  		<div messages msgs="msg"></div>
+
+  		<div class="form-group">
+	  		<label class="control-label">Login</label>
+		  	<input class="form-control" type="text" id="userName" ng-model="tplInsert.scope.form.userName" autofocus required/>
+	  	</div>
+
+	  	<div class="form-group">
+		  	<label class="control-label">Senha</label>
+			<input class="form-control" type="password" ng-model="tplInsert.scope.form.passwd" required/>
+		</div>
+    </fieldset>
+</form>

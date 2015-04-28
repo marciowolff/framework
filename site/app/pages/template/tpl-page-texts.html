@@ -1,0 +1,35 @@
+
+<div class="panel panel-default" ng-class="content.classe" >
+	<header ng-if="content.title">
+		<h1>{{content.title}}</h1>
+		<p ng-if="content.subtitle" ng-bind-html="content.subtitle"></p>
+	</header>
+
+	<div ng-repeat="section in content.detail" class="panel-body" ng-class="{'col-md-{{section.size}}' : section.size, '{{section.classe}}': section.classe}">
+		<header ng-if="section.title">
+			<h2>{{section.title}}</h2>
+		</header>
+
+		<section ng-if="!section.tpl && !section.insertpartials" ng-class="section.classline">
+			<article link-bind="section.description" ng-bind-html="section.description">				
+			</article>
+
+			<footer ng-if="section.btn">
+				<a href='' ng-repeat="btns in section.btn" ng-if="!btns.openmodal"  ng-click="location(btns, section)" class="btn" ng-class="btns.classe">
+					<span ng-if="btns.icon" ng-class="btns.icon"></span>
+					<span ng-bind-html="btns.title"></span>		
+				</a>
+
+				<a href='' ng-repeat="btns in section.btn" ng-if="btns.openmodal" btn-openmodal modal-scope="btns" class="btn" ng-class="btns.classe">
+					<span ng-if="btns.icon" ng-class="btns.icon"></span>
+					<span ng-bind-html="btns.title"></span>		
+				</a>
+			</footer>
+		</section>
+
+		<div ng-if="section.img" tpl-insert='section.img'>{{section.img}}</div>
+
+		<section ng-if="section.tpl || section.insertpartials" tpl-insert='section'>			
+		</section>	
+	<div>
+</div>

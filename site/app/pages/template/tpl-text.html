@@ -1,0 +1,17 @@
+
+
+<div class="panel panel-default" ng-class="content.classe">
+	<header ng-if="content.title">
+		<h1>			
+			<span ng-if="content.icon" ng-class="content.icon"></span>
+			{{content.title}}
+		</h1>
+		<p ng-if="content.subtitle">{{content.subtitle}}</p>
+	</header>
+	
+	<div messages msgs="content.msgs"></div>
+
+	<div ng-if="content.texts" class="panel-body">
+		<p ng-repeat="text in content.texts" tpl-insert="text"></p>
+	</div>
+</div>

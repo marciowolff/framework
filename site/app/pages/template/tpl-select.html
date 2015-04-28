@@ -1,0 +1,17 @@
+
+<label ng-if="!content.labelHide" class="control-label" ng-class="{'col-sm-{{content.labelSize}}' : content.labelSize, '{{content.classLabel}}': content.classLabel}" for="{{content.name}}">{{content.labelName}}<sub ng-if="content.required && !content.placeholder" class="requiredStyle">*</sub></label>
+
+<div class="input" ng-class="{'col-sm-{{content.inputSize}}' : content.inputSize}" ng-if="!content.inputHide">
+	<select class="form-control" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" name="{{content.name}}" id="{{content.id}}" ng-model="content.lineValue" value="{content.lineValue ? content.lineValue.id : 0}" ng-required="{{content.required}}" ng-options="option.description for option in content.options.obj track by option.id" service-call="content" service-form="editField">		
+	 <option value="" ng-if="!content.haveDefault">Selecione</option>
+	</select>
+	<span ng-if="content.information" class="information">
+		<small class="icon info">i</small>
+		<span>{{content.information}}</span>
+	</span>
+</div>
+<small ng-if="content.obsSize" class="help-block" ng-class="{'col-sm-{{content.obsSize}}' : content.obsSize}">
+	<span ng-if="content.obsLabelSize" class="obsLabel" ng-class="{'col-sm-{{content.obsLabelSize}}' : content.obsLabelSize}"></span>
+	<span class="obsText" ng-class="content.classinner" link-bind="content.obs" ng-bind-html="content.obs"></span>
+</small>
+

@@ -1,0 +1,12 @@
+
+<label ng-hide="content.labelHide" class="control-label" ng-class="{'col-sm-{{content.labelSize}}' : content.labelSize , '{{content.classLabel}}': content.classLabel}" for="{{content.name}}">{{content.labelName}} <sub ng-if="content.required && !content.placeholder" class="requiredStyle">*</sub></label>
+<div ng-class="{'col-sm-{{content.inputSize}}' : content.inputSize}" ng-hide="content.inputHide">
+	<img ng-if="!content.parameter || content.hideImage" insert-img="content.image" insert-content="content" alt="{{content.name}}"/>  
+	<img ng-if="content.parameter || content.hideImage" insert-img="content.image" insert-content="content" alt="{{content.name}}"/>  
+	
+	<span ng-if="content.information" class="information">
+		<small class="icon info">i</small>
+		<span>{{content.information}}</span>
+	</span>
+</div>
+<small ng-if="content.obsSize" class="help-block" ng-class="{'col-sm-{{content.obsSize}}' : content.obsSize}">{{content.obs}}</small>

@@ -1,0 +1,18 @@
+
+<div>
+	<h2 ng-if="content.scope.title" ng-bind-html="content.scope.title"></h2>
+	<img ng-if="content.scope.img" insert-img="content.scope.img.url" insert-content="content.scope" alt="tplInsert.scope.img.alt"/>  
+
+	<div ng-if="content.scope.itens" ng-bind-html="content.scope.itens"></div>
+
+	<span ng-if="content.scope.btn" ng-repeat="btns in content.scope.btn">
+		<a href='' ng-if="!btns.openmodal" ng-click="location(btns)" class="btn" ng-class="btns.classe">
+			<span ng-if="btns.icon" ng-class="btns.icon"></span>
+			<span ng-bind-html="btns.title"></span>		
+		</a>
+		<a href='' ng-if="btns.openmodal" btn-openmodal modal-scope="btns" class="btn" ng-class="btns.classe">
+			<span ng-if="btns.icon" ng-class="btns.icon"></span>
+			<span ng-bind-html="btns.title"></span>		
+		</a>
+	</span>	
+</div>

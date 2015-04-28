@@ -1,0 +1,77 @@
+<div messages msgs="content.msgs"></div>
+
+<ul ng-class="content.contentClass" style="max-height: {{content.maxHeight}}">
+	<li ng-repeat="linha in content.result.line | limitTo: (content.aditionals.linelimite ? content.aditionals.linelimite : content.result.line.length)" ng-class="linha.classe">
+		<span ng-if="linha.iconline" class="icon" ng-class="linha.iconline"></span>
+		<form ng-repeat="field in linha.field" ng-if="!field.hidden" class='item' ng-class="{'{{field.classe}}' : field.classe, 'active': activeNav(field)}" name="field.tplform" id="form-{{field.name}}">
+			<div ng-if="!field.openmodal">
+				<span ng-if="!content.clickbtn" ng-click="location(field)">
+					<span ng-if="field.alias" ng-class="field.aditionals.aliasclassheader">{{field.alias}}</span>
+					<span ng-if="!field.hideImage" ng-class="field.imageclass">
+						{{field.image}}
+						<img ng-if="field.image" insert-img="field.image" insert-content="field"/>
+					</span>
+					<span ng-if="field.icon" class="icon" ng-class="field.icon"></span>
+					<span ng-if="field.alias" ng-class="field.aditionals.aliasclass">{{field.alias}}</span>
+					<span ng-if="field.name" ng-class="field.aditionals.nameclass">{{field.name}}</span>
+					<span ng-class="field.aditionals.valueclass" link-bind="field.value" ng-bind-html="field.value"></span>
+					
+					<span ng-if="field.list" class="list" insert-field="field" edit-field="content"></span>
+				</span>
+
+				<span ng-if="content.clickbtn">
+					<span ng-if="field.alias" ng-class="field.aditionals.aliasclassheader">{{field.alias}}</span>
+					<span ng-if="!field.hideImage" ng-class="field.imageclass">
+						<img ng-if="field.image" insert-img="field.image" insert-content="field"/>  
+					</span>
+					<span ng-if="field.icon" class="icon" ng-class="field.icon"></span>
+					<span ng-if="field.alias" ng-class="field.aditionals.aliasclass">{{field.alias}}</span>
+					<span ng-if="field.name" ng-class="field.aditionals.nameclass">{{field.name}}</span>
+					<span ng-class="field.aditionals.valueclass" link-bind="field.value" ng-bind-html="field.value"></span>
+					
+					<span ng-if="field.list" class="list" insert-field="field" edit-field="content"></span>
+
+					<span ng-if="field.btns" class="contentBtns" service-call="field" service-form="content">
+						<a ng-repeat="btn in field.btns" ng-if="btn.target" href="{{btn.url}}" target="{{btn.target}}" class="btn" ng-class="btn.classe">{{btn.title}}</a>
+
+						<a ng-repeat="btn in field.btns" ng-if="!btn.target && !btn.openmodal" href="" ng-click='location(btn, field)' class="btn" ng-class="btn.classe">{{btn.title}}</a>
+
+						<a ng-repeat="btn in field.btns" ng-if="!btn.target && btn.openmodal" class="btn" btn-openmodal modal-scope="btn" modal-detail="field" ng-disabled="btn.disabled" ng-class="btn.classe">{{btn.title}}</a>
+					</span>
+				</span>
+			</div>
+
+			<div ng-if="field.openmodal">
+				<span ng-if="!content.clickbtn" btn-openmodal modal-scope="field">
+					<span ng-if="field.alias" ng-class="field.aditionals.aliasclassheader">{{field.alias}}</span>
+					<span ng-if="!field.hideImage" ng-class="field.imageclass">
+						<img ng-if="field.image" insert-img="field.image" insert-content="field"/>
+					</span>
+					<span ng-if="field.icon" class="icon" ng-class="field.icon"></span>
+					<span ng-if="field.alias" ng-class="field.aditionals.aliasclass">{{field.alias}}</span>
+					<span ng-if="field.name" ng-class="field.aditionals.nameclass">{{field.name}}</span>
+					<span ng-class="field.aditionals.valueclass" link-bind="field.value" ng-bind-html="field.value"></span>
+					
+					<span ng-if="field.list" class="list" insert-field="field" edit-field="content" ></span>
+				</span>
+
+				<span ng-if="content.clickbtn">
+					<span ng-if="field.alias" ng-class="field.aditionals.aliasclassheader">{{field.alias}}</span>
+					<span ng-if="!field.hideImage" ng-class="field.imageclass">
+						<img ng-if="field.image" insert-img="field.image" insert-content="field"/>  
+					</span>
+					<span ng-if="field.icon" class="icon" ng-class="field.icon"></span>
+					<span ng-if="field.alias" ng-class="field.aditionals.aliasclass">{{field.alias}}</span>
+					<span ng-if="field.name" ng-class="field.aditionals.nameclass">{{field.name}}</span>
+					<span ng-class="field.aditionals.valueclass" link-bind="field.value" ng-bind-html="field.value"></span>
+					
+					<span ng-if="field.list" class="list" insert-field="field" edit-field="content"></span>
+
+					<span ng-if="field.btns" class="contentBtns" service-call="field" service-form="content">
+						<a ng-repeat="btn in field.btns" btn-openmodal modal-scope="btn" modal-detail="field" href="" ng-disabled="btn.disabled" ng-class="btn.classe" class="btn">{{btn.title}}</a>
+					</span>
+				</span>
+			</div>
+		</form>
+	</li>
+</ul>

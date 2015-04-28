@@ -1,0 +1,13 @@
+<a href class="dropdown-toggle" data-toggle="dropdown">{{dropScope.nomeMenu}} <span class="caret"></span></a>
+
+<ul class="submenu dropdown-menu" role="menu" dropdown>
+  <li class="item" ng-repeat="menu in dropSubmenu | filter: {itemMenu.nomeMenu: null}">
+      <a href="" ng-click="checkedSubmenu($event, menu.link)" class="dropdown-toggle{{$index}}" data-toggle="dropdown">{{menu.nome}}</a>
+
+      <ul class="sub-submenu dropdown-menu dropdown-menu-right" role="submenu" aria-labelledby="dropdownMenu{{$index}}">
+        <li ng-repeat="submenu in dropSubmenu | filter: {itemMenu.nomeMenu: menu.nome}">          
+          <a href="{{submenu.link}}">{{submenu.nome}}</a>          
+        </li>
+      </ul>      
+  </li> 
+</ul>

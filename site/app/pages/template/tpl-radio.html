@@ -1,0 +1,12 @@
+<span ng-if="!content.labelHide" class="control-label" ng-class="{'col-sm-{{content.labelSize}}' : content.labelSize, '{{content.classLabel}}': content.classLabel, 'ng-dirty': content.invalid, 'modified' : content.modified}"></span>
+<div class="checkbox" ng-class="{'col-sm-{{content.inputSize}}' : content.inputSize}" ng-if="!content.inputHide">
+  	<label>
+
+    	<input type="{{content.type}}" name="{{content.name}}" id="{{content.id}}" ng-required="{{content.required}}" ng-model="content.checked" ng-checked="content.checked" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" service-call="content" service-form="editField"/>
+    	<span link-bind="content.labelName" ng-bind-html="content.labelName"></span>
+  	</label>
+  	<span ng-if="content.information" class="information">
+		<small class="icon info">i</small>
+		<span>{{content.information}}</span>
+	</span>
+</div>

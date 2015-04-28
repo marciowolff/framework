@@ -1,0 +1,56 @@
+<div ng-controller="internalCtrl" class="center">
+	<header ng-if="!pageCurrent.hideheader" ng-include="headerPartial" id="headerApp" ng-class="{'noLogin' : pageCurrent.headerlogin}">
+	</header>
+
+	<section id="content">	
+		<span class="styleBg"></span>
+
+		<div class="container">
+			<nav ng-if="authNav(site.layout.navinternalauth) && pageCurrent.nav || pageCurrent.btnReturn" id="navInternal" class="navInternal">
+				<div ng-repeat="box in pageCurrent.nav" tpl-insert='box'></div>				
+				
+				<a ng-if="pageCurrent.btnReturn.visibled.top" ng-click="location({url: 'return'})" class="btn btn-default return">
+					<span ng-if="pageCurrent.btnReturn.title">{{pageCurrent.btnReturn.title}}</span>
+					<span ng-if="!pageCurrent.btnReturn.title">Voltar</span>
+				</a>
+			</nav>
+
+			
+			<h1 ng-if="pageCurrent.pagTitle" ng-class="pageCurrent.pagTitle.classe">{{pageCurrent.pagTitle.text}}</h1>
+			<h2 ng-if="pageCurrent.pagTitle.subtitle" ng-class="pageCurrent.pagTitle.subtitle.classe">{{pageCurrent.pagTitle.subtitle.text}}</h2>
+			<p ng-if="pageCurrent.pagTitle.description" ng-class="pageCurrent.pagTitle.description.classe">{{pageCurrent.pagTitle.description.text}}</p>
+
+			<header id="bannerApp" ng-if="pageCurrent.banner">
+				<div ng-repeat="box in pageCurrent.banner" tpl-insert='box'></div>
+			</header>
+
+			<menu id="menuApp" ng-if="pageCurrent.menu && !pageCurrent.hidemenu">
+				<div ng-repeat="box in pageCurrent.menu" tpl-insert='box'></div>
+			</menu>
+
+			<div ng-class="pageCurrent.menu.length == 0 ? 'col-xs-12 col-md-12 col-sm-12' : ''">
+				<div ng-if="mainMsgs && pageCurrent.menu.length == 0 && pageCurrent.banner.length == 0 || mainMsgs.errorContent" messages msgs="mainMsgs"></div>
+			</div>
+
+			<article id="mainApp" class="main" ng-if="pageCurrent.main && !mainMsgs.errorContent">
+				<div ng-if="mainMsgs && pageCurrent.menu.length > 0 || mainMsgs && pageCurrent.banner.length > 0" messages msgs="mainMsgs"></div>
+				<div ng-if="pageCurrent.main" ng-repeat="box in pageCurrent.main" tpl-insert='box'></div>
+			</article>
+
+
+			<nav ng-if="pageCurrent.btnReturn" id="navFooter" class="navInternal footer">
+				<a ng-if="pageCurrent.btnReturn.visibled.footer" ng-click="location({url: 'return'})" class="btn btn-default return">
+					<span ng-if="pageCurrent.btnReturn.title">{{pageCurrent.btnReturn.title}}</span>
+					<span ng-if="!pageCurrent.btnReturn.title">Voltar</span>
+				</a>
+			</nav>
+		</div>
+	</section>
+
+	<div ng-if="pageCurrent.footer.parceiros && !pageCurrent.hidefooter" id="{{pageCurrent.footer.parceiros.id}}" ng-class="pageCurrent.footer.parceiros.parceirosClass">
+	  <div tpl-insert='pageCurrent.footer.parceiros'></div>
+	</div>
+
+	<footer ng-if="footerPartial && !pageCurrent.hidefooter || !site.layout.footer.copyright && site.layout.footer.lists && !pageCurrent.hidefooter" ng-include="footerPartial" id="footerApp">		
+	</footer>
+</div>

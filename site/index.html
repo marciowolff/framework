@@ -1,0 +1,105 @@
+<!doctype html>
+
+<!-- AMBIENTE PROD
+AMBIENTE PROD -->
+	<html lang="en" xmlns:ng="http://angularjs.org" ng-app="app">
+
+<!-- AMBIENTE DEV 
+<html lang="en" xmlns:ng="http://angularjs.org" ng-app="appDev">
+-->
+
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title ng-bind="site.name"></title>
+    <link rel="shortcut icon" href="assets/images/icone.ico" />
+
+    <script type="text/javascript">
+        //VERIFICACAO DO IE
+        function isIE () {
+          var myNav = navigator.userAgent.toLowerCase();
+          var isIE11 = !!navigator.userAgent.match(/Trident.*rv[ :]*11\./);
+          return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : (isIE11 ? 11 : false);
+        }
+
+        if (isIE () ) {
+            if (isIE () < 9) {
+                window.location = '/inmais/check.html';
+            }       
+        }
+    </script>
+
+    <script src="app/assets/js/libs/angular.js" type="text/javascript"></script>    
+    <script src="app/assets/js/libs/jquery-1.11.0.min.js" type="text/javascript"></script>
+    
+    <script src="app/assets/js/libs/angulartics.js"></script>
+    <script src="app/assets/js/libs/angulartics-ga.js"></script>
+
+    <script src="app/assets/js/libs/bootstrap/ui-utils.min.js" type="text/javascript"></script>
+    <script src="app/assets/js/libs/bootstrap/ui-utils-ieshiv.min.js" type="text/javascript"></script>
+    <script src="app/assets/js/libs/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+    <script src="app/assets/js/libs/bootstrap/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+
+    <!-- API MAPS = https://developers.google.com/maps/documentation/ ou https://developers.google.com/places/documentation/  -->
+    <!--script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=geometry,places&sensor=false"></script-->
+
+    <!-- IEs que nao dao suporte -->
+    <script src="app/assets/js/libs/modernizr.js" type="text/javascript"></script>
+    <script src="app/assets/js/libs/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- IEs que nao dao suporte -->
+
+    
+    <script type="text/javascript" src="services/externalServices.js"></script>
+    <script type="text/javascript" src="app/services/services.min.js"></script>
+    <script type="text/javascript" src="app/assets/js/app.min.js"></script>
+    <script type="text/javascript" src="app/assets/js/pages/pages.min.js"></script>
+
+    <script type="text/javascript" src="services/externalController.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="app/assets/style/style.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/style/style.css">
+
+
+    
+
+    <!--script src="//cdnjs.cloudflare.com/ajaxlibs/less.js/1.7.3/less.min.js"></script>
+    <script>
+    	less.modifyVars({
+		  '@base-color': '#000'
+		});
+    </script-->
+
+    <!--script>
+    var req = new XMLHttpRequest();
+    req.open('HEAD', document.location, false);
+    req.send(null);
+    var headers = req.getAllResponseHeaders();
+    var header = req.getResponseHeader('X-teste');
+
+    console.log(headers, header)
+    </script-->
+</head>
+<body ng-controller="appCtrl">
+
+	<div ng-view='mainApp' id='{{pag}}'>
+	</div>
+
+
+    <script type="text/javascript">
+        (function () {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/client:plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+
+            setTimeout(function () {
+                var a = document.createElement("script");
+                var b = document.getElementsByTagName("script")[0];
+                a.src = document.location.protocol + "//dnn506yrbagrg.cloudfront.net/pages/scripts/0020/4848.js?" + Math.floor(new Date().getTime() / 3600000);
+                a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+            }, 1);
+        })();
+    </script>
+
+    <div analytics></div>
+    
+</body>
+</html>

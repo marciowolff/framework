@@ -1,0 +1,12 @@
+<div ng-controller='modalCtrl'>
+	<a href="" ng-click="closeModal()" class="closeModal"><span class="btn btn-primary">X</span></a>
+
+	<div class="modal-body" tpl-insert='modal.content'></div>
+
+	<div class="modal-footer">
+		<a ng-repeat="btn in modal.content.btns" name="{{btn.name}}" class="btn" ng-class="btn.classe" ng-show="btn.visibled" ng-click="eventBtn(btn.name, btn)", ng-disabled="btn.disabled" btn-redirect-external="btn" btn-redirect-content="modal.content">
+			<span ng-if="btn.icon" ng-class="btn.icon"></span>
+			<span ng-bind-html="btn.title"></span>
+		</a>
+	</div>
+</div>

@@ -1,0 +1,3 @@
+<a ng-repeat="menu in content.menu" ng-if="!menu.openmodal" href="" ng-click='location(menu)' ng-class="menu.classe">{{menu.title}}</a>
+
+<a ng-repeat="menu in content.menu" ng-if="menu.openmodal" btn-openmodal modal-scope="menu" href="" ng-class="menu.classe">{{menu.title}}</a>

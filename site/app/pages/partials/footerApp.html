@@ -1,0 +1,37 @@
+
+<div ng-class="site.layout.type == 'full' ? '' : 'container'">
+  <a ng-if="site.logoDesenv && site.logoDesenv.url" href="{{site.logoDesenv.url}}" title="{{site.logoDesenv.title}}">
+    <img insert-img="site.logoDesenv.img" insert-content="site.logoDesenv" id="logoDesenv" alt="{{site.logoDesenv.title}}" class="logo"/>  
+  </a>
+
+  <nav ng-if="site.layout.footer.lists" ng-class="{'col-md-{{site.layout.footer.sizenav}}' : site.layout.footer.sizenav}">
+  	<ul ng-repeat="navfooter in site.layout.footer.lists" ng-class="{'{{navfooter.classe}}':navfooter.classe, 'col-md-{{navfooter.size}}' : navfooter.size}">
+
+  		<li ng-if="navfooter.title" class="titlelist"><h5>{{navfooter.title}}</h5></li>
+  		<li ng-repeat="links in navfooter.list" ng-class="activeNav(links)">
+  			<a ng-if="!links.openmodal && !links.linkexterno" href="" ng-click="navlocation(links)">
+  				<span ng-if="links.icon" class="icon" ng-class="links.icon"></span>
+				<span ng-class="links.classe">{{links.title}}</span>
+			</a>
+
+			<a ng-if="links.openmodal && !links.linkexterno" btn-openmodal modal-scope="links" href="" ng-class="links.classe">
+				<span ng-if="links.icon" class="icon" ng-class="links.icon"></span>
+				<span ng-class="links.classe">{{links.title}}</span>
+			</a>
+
+			<a ng-if="links.linkexterno" href="http://{{links.url}}" target="_blank">
+  				<span ng-if="links.icon" class="icon" ng-class="links.icon"></span>
+				<span ng-class="links.classe">{{links.title}}</span>
+			</a>
+  		</li>
+  	</ul>
+  </nav>
+
+
+  <img ng-if="site.logoDesenv && !site.logoDesenv.url" insert-img="site.logoDesenv.img" insert-content="site.logoDesenv" id="logoDesenv" alt="{{site.logoDesenv.title}}" class="logo"/>  
+
+  <p ng-if="site.layout.footer.copyright">
+    Copyright © 2014. Todos os direitos reservados 
+    <small>Powered by {{site.logoDesenv.title}}</small>
+  </p>
+</div>

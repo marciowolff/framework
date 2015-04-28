@@ -1,0 +1,32 @@
+
+<label ng-if="!content.labelHide" class="control-label" ng-class="{'col-sm-{{content.labelSize}}' : content.labelSize, '{{content.classLabel}}': content.classLabel}" for="{{content.name}}">{{content.labelName}} <sub ng-if="content.required && !content.placeholder" class="requiredStyle">*</sub></label>
+
+<span class="input" ng-class="{'col-sm-{{content.inputSize}}' : content.inputSize}" ng-if="!content.inputHide">
+
+	<input ng-if="!content.mask && content.type != 'tel' && content.name != 'cpf' && content.type != 'cpf' && content.name != 'cnpj' && content.type != 'cnpj' && content.name != 'cep' && content.type != 'cep' && content.name != 'rg' && content.type != 'rg'" class="form-control" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" type='{{content.type == "number" ? text : content.type}}' ng-model='content.lineValue' value="{{content.lineValue}}" placeholder="{{content.placeholder}}" name="{{content.name}}" id="{{content.id}}" ng-required='{{content.required}}' ng-disabled="{{content.disabled}}" maxlength="{{content.maxlength}}" service-call="content" service-form="editField"/>	
+
+	
+	<input ng-if="content.mask && content.type != 'tel' && content.name != 'cpf' && content.type != 'cpf' && content.name != 'cnpj' && content.type != 'cnpj' && content.name != 'cep' && content.type != 'cep' && content.name != 'rg' && content.type != 'rg'" class="form-control" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" type='{{content.type}}' ng-model='content.lineValue' ui-mask="{{content.mask}}" value="{{content.lineValue}}" name="{{content.name}}" id="{{content.id}}" ng-required="{{content.required}}" ng-disabled="{{content.disabled}}" maxlength="{{content.maxlength}}" service-call="content" service-form="editField"/>
+	
+	<input ng-if="!content.mask && content.type == 'tel'" class="form-control" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" type='{{content.type}}' ng-model='content.lineValue' value="{{content.lineValue}}" ui-mask="(99) 9999-9999?9" name="{{content.name}}" id="{{content.id}}" ng-required="{{content.required}}" ng-disabled="{{content.disabled}}" maxlength="{{content.maxlength}}" service-call="content" service-form="editField"/>
+
+	<input ng-if="!content.mask && content.name == 'cpf' || !content.mask && content.type == 'cpf'" class="form-control" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" type='{{content.type}}' ng-model='content.lineValue' value="{{content.lineValue}}" ui-mask="999.999.999-99" name="{{content.name}}" id="{{content.id}}" ng-required="{{content.required}}" ng-disabled="{{content.disabled}}" maxlength="{{content.maxlength}}" service-call="content" service-form="editField"/>
+
+	<input ng-if="!content.mask && content.name == 'cnpj' || !content.mask && content.type == 'cnpj'" class="form-control" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" type='{{content.type}}' ng-model='content.lineValue' value="{{content.lineValue}}" ui-mask="99.999.999/9999-99" name="{{content.name}}" id="{{content.id}}" ng-required="{{content.required}}" ng-disabled="{{content.disabled}}" maxlength="{{content.maxlength}}" service-call="content" service-form="editField"/>
+
+	<input ng-if="!content.mask && content.name == 'cep' || !content.mask && content.type == 'cep'" class="form-control" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" type='{{content.type}}' ng-model='content.lineValue' value="{{content.lineValue}}" ui-mask="99999-999" name="{{content.name}}" id="{{content.id}}" ng-required="{{content.required}}" ng-disabled="{{content.disabled}}" maxlength="{{content.maxlength}}" service-call="content" service-form="editField"/>
+
+	<input ng-if="!content.mask && content.type == 'moeda'" class="form-control" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" type='{{content.type}}' ng-model='content.lineValue' value="{{content.lineValue}}" format-moeda="content" service-form="editField" name="{{content.name}}" id="{{content.id}}" ng-required="{{content.required}}" ng-disabled="{{content.disabled}}" maxlength="{{content.maxlength}}"/>
+
+	<input ng-if="!content.mask && content.name == 'rg' || !content.mask && content.type == 'rg'" class="form-control" ng-class="{'ng-dirty': content.invalid, 'modified' : content.modified}" type='{{content.type}}' ng-model='content.lineValue' value="{{content.lineValue}}" name="{{content.name}}" id="{{content.id}}" ui-mask="99.999.999-9" ng-required="{{content.required}}" ng-disabled="{{content.disabled}}" maxlength="{{content.maxlength}}" service-call="content" service-form="editField"/>
+
+	<span ng-if="content.information && content.lineValue" class="information">
+		<small class="icon info">i</small>
+		<span>{{content.information}}</span>
+	</span>
+</span>
+
+<small ng-if="content.obsSize" class="help-block" ng-class="{'col-sm-{{content.obsSize}}' : content.obsSize}">
+	<span ng-if="content.obsLabelSize" class="obsLabel" ng-class="{'col-sm-{{content.obsLabelSize}}' : content.obsLabelSize}"></span>
+	<span class="obsText" ng-class="content.classinner" link-bind="content.obs" ng-bind-html="content.obs"></span>
+</small>

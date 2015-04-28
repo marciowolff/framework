@@ -1,0 +1,42 @@
+<div ng-controller="internalCtrl" class="full">
+	<header ng-if="!pageCurrent.hideheader" ng-include="headerPartial" id="headerApp" ng-class="{'noLogin' : pageCurrent.headerlogin}">
+	</header>
+
+	<menu id="menuApp" ng-if="pageCurrent.menu && !pageCurrent.hidemenu" ng-class="menuShow != true ? 'hideMenu': site.layout.menuwidth">
+		<div ng-repeat="box in pageCurrent.menu" tpl-insert='box'></div>
+	</menu>
+
+	<section id="content" ng-class="menuShow != true ? 'col-xs-12 col-md-12 col-sm-12' : pageCurrent.menu.length > 0 ? '{{site.layout.mainwidth}}' : 'col-xs-12 col-md-12 col-sm-12'" class="pull-right">	
+		<span class="styleBg"></span>
+		<div class="container">		
+			<nav ng-if="authNav(site.layout.navinternalauth) && pageCurrent.nav" id="navInternal" class="navInternal">
+				<div ng-repeat="box in pageCurrent.nav" tpl-insert='box'></div>				
+			</nav>
+
+			<h1 ng-if="pageCurrent.pagTitle" ng-class="pageCurrent.pagTitle.classe">{{pageCurrent.pagTitle.text}}</h1>
+			<h2 ng-if="pageCurrent.pagTitle.subtitle" ng-class="pageCurrent.pagTitle.subtitle.classe">{{pageCurrent.pagTitle.subtitle.text}}</h2>
+			<p ng-if="pageCurrent.pagTitle.description" ng-class="pageCurrent.pagTitle.description.classe">{{pageCurrent.pagTitle.description.text}}</p>
+			
+			<header id="bannerApp" ng-if="pageCurrent.banner">
+				<div ng-repeat="box in pageCurrent.banner" tpl-insert='box'></div>
+			</header>
+			
+
+			<div ng-class="pageCurrent.menu.length == 0 ? 'col-xs-12 col-md-12 col-sm-12' : '' || menuShow != true ? 'col-xs-12 col-md-12 col-sm-12'">
+				<div ng-if="mainMsgs && pageCurrent.menu.length == 0 && pageCurrent.banner.length == 0 || mainMsgs.errorContent" messages msgs="mainMsgs"></div>
+			</div>
+
+			<article id="mainApp" class="main" ng-if="pageCurrent.main && !mainMsgs.errorContent">
+				<div ng-if="mainMsgs && pageCurrent.menu.length > 0 || mainMsgs && pageCurrent.banner.length > 0" messages msgs="mainMsgs"></div>
+				<div ng-if="pageCurrent.main" ng-repeat="box in pageCurrent.main" tpl-insert='box'></div>
+			</article>
+		</div>
+	</section>
+
+	<div ng-if="pageCurrent.footer.parceiros && !pageCurrent.hidefooter" id="{{pageCurrent.footer.parceiros.id}}" class="container" ng-class="pageCurrent.menu.length > 0 ? '{{pageCurrent.footer.parceiros.parceirosClass}} pull-right' : 'col-xs-12 col-md-12 col-sm-12'">
+	  <div tpl-insert='pageCurrent.footer.parceiros'></div>
+	</div>
+
+	<footer ng-if="footerPartial && !pageCurrent.hidefooter || !site.layout.footer.copyright && site.layout.footer.lists && !pageCurrent.hidefooter" ng-include="footerPartial" id="footerApp">		
+	</footer>
+</div>

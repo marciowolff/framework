@@ -1,0 +1,8 @@
+
+<span ng-if="content.showNumPages" class="pagination-allPages">
+	<strong ng-if="!content.numPagesTextHidden">{{content.numPagesText}}</strong>
+	<small>{{content.form.table.page.bigCurrentPage}} de {{content.form.table.page.totalpages}}</small>
+</span>
+<div tpl-pagination="content" class="pagination-nav">
+	<pagination total-items="content.form.table.page.bigTotalItems" items-per-page="content.qtdLines" ng-model="content.form.table.page.bigCurrentPage" page="content.form.table.page.currentPage" max-size="content.form.table.page.maxSize" class="pagination-sm" num-pages="content.form.table.page.totalpages" ng-change="content.pageChanged()" direction-links="content.form.table.page.directionLinks" boundary-links="content.form.table.page.boundaryLinks" previous-text="{{content.form.table.page.previoustext}}" next-text="{{content.form.table.page.nexttext}}" first-text="{{content.form.table.page.firsttext}}" last-text="{{content.form.table.page.lasttext}}"></pagination>	
+</div>

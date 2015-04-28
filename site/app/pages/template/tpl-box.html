@@ -1,0 +1,11 @@
+<h4 ng-if="content.title" ng-bind-html="content.title"></h4>
+
+<div ng-include="content.insertTplContent" ng-class="content.contentClass"></div>
+
+<a href="" ng-repeat="btns in content.btn" ng-if="!btns.openmodal" ng-click="location(btns)" class="btn" ng-class="btns.classe">
+	{{btns.title}}
+</a>
+
+<a href="" ng-repeat="btns in content.btn" ng-if="btns.openmodal" btn-openmodal modal-scope="btns" class="btn" ng-class="btns.classe">
+	{{btns.title}}
+</a>

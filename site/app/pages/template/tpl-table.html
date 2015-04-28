@@ -1,0 +1,54 @@
+<div messages msgs="content.msgs"></div>
+<table class="table" id="{{content.idTable}}">
+	<thead ng-if="content.result.header && !content.aditionals.titleshidden" >
+		<tr ng-repeat="trs in content.result.header">
+			<th ng-repeat="th in trs.field" ng-class="th.classe" width='th.width' ng-if="!th.hidden">{{th.alias}}</th>
+			<th ng-if="content.aditionals.btnLine">&nbsp;</th>
+		</tr>
+	</thead>
+
+	<tbody ng-if="content.result.line && content.result.line">		
+		<tr ng-repeat="tr in content.result.line | limitTo: (content.aditionals.linelimite ? content.aditionals.linelimite : content.result.line.length)" btn-openmodal modal-scope="content.aditionals" modal-detail="tr.field">
+			<td ng-repeat="td in tr.field" ng-class="td.classe" colspan="{{td.colspan}}" ng-if="!td.hidden">
+				<span ng-if="td.icon" ng-class="td.icon"></span> {{td.value}}				
+			</td>
+
+			<td ng-if="content.aditionals.btnLine">
+				<span class="contentBtn" ng-repeat="btns in content.aditionals.btnLine" view-conditional="btns" view-line="tr">
+					<a href="" ng-if="!btns.openmodal && !btns.hide" ng-click="location(btns, tr.field)" class="btn" ng-class="btns.classe" ng-disabled="btns.disabled" title='{{btns.title || btns.titlelink}}'>
+						<span ng-if="btns.icon" ng-class="btns.icon"></span>
+						<span ng-bind-html="btns.title"></span>		
+					</a>
+
+					<a href="" ng-if="btns.openmodal && !btns.hide" btn-openmodal modal-scope="btns" modal-detail="tr.field" class="btn" ng-class="btns.classe" ng-disabled="btns.disabled" title="{{btns.title || btns.titlelink}}">
+						<span ng-if="btns.icon" ng-class="btns.icon"></span>
+						<span ng-bind-html="btns.title"></span>		
+					</a>
+					<span ng-if="btns.information" class="information">
+						<small class="icon info">i</small>
+						<span>{{btns.information}}</span>
+					</span>
+				</span>
+			</td>
+		</tr>		
+	</tbody>
+	<tbody ng-if="!content.result.line || content.result.line == 0" ng-repeat="trs in content.result.header">		
+		<tr ng-repeat="trs in content.result.header">
+			<td ng-if="!content.aditionals.btnLine" colspan="{{trs.field.length}}">
+				Nenhum registro encontrado
+			</td>
+			<td ng-if="content.aditionals.btnLine" colspan="{{trs.field.length + 1}}">
+				Nenhum registro encontrado
+			</td>
+		</tr>		
+	</tbody>
+
+	<tfoot ng-if="content.result.footer && !content.aditionals.footerhidden">
+		<tr ng-repeat="trs in content.result.footer">
+			<th ng-repeat="td in trs.field" ng-class="td.classe" colspan="{{td.colspan}}">
+				<span ng-if="td.icon" ng-class="td.icon"></span> 
+				<span>{{td.alias}}</span> {{td.value}}
+			</th>
+		</tr>
+	</tfoot>		
+</table>

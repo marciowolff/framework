@@ -1,0 +1,45 @@
+<slick ng-if="content.type != 2" class="slider single-item" responsive="breakpoints" slides-to-show='{{content.slideShow}}' slides-to-scroll='{{content.slideToScroll}}' autoplay="{{content.autoplay}}" speed="{{content.speed}}" currentIndex="{{content.slideInit}}" pauseOnHover="true" ng-repeat="slide in content.result.line">
+  	<div ng-repeat="contSlide in slide.field" ng-class="contSlide.classe">
+  		<a ng-if="contSlide.url && contSlide.target && !contSlide.hidden" href="{{contSlide.url}}" title="{{contSlide.titleLink}}" target="{{contSlide.aditionals.target}}">
+			<span>
+				<img ng-if="contSlide.image" insert-img="contSlide.image" insert-content="contSlide" alt='{{contSlide.title}}'/>
+
+			    <strong ng-if="contSlide.alias" class="carousel-caption">
+			      {{contSlide.alias}}
+			    </strong>
+	    	</span>
+	    </a>
+
+
+	    <a ng-if="contSlide.url && !contSlide.target && !contSlide.hidden" ng-click="location(contSlide, contSlide)" title="{{contSlide.titleLink}}" ng-class="{'active': activeNav(contSlide)}">
+			<span>
+				<img ng-if="contSlide.image" insert-img="contSlide.image" insert-content="contSlide" alt='{{contSlide.title}}'/>
+
+			    <strong ng-if="contSlide.alias" class="carousel-caption">
+			      {{contSlide.alias}}
+			    </strong>
+			</span>
+	    </a>	    
+
+	    <span ng-if="!contSlide.url && !contSlide.hidden">
+			<img ng-if="contSlide.image" insert-img="contSlide.image" insert-content="contSlide" alt='{{contSlide.titleLink}}'/>
+
+		    <strong ng-if="contSlide.alias" class="carousel-caption">
+		      {{contSlide.alias}}
+		    </strong>
+	    </span>
+  	</div>  
+</slick>
+
+<carousel ng-if="content.type == 2" interval="content.speed">
+    <slide ng-repeat="contSlide in content.result.line[0].field" active="contSlide.active">
+		<img ng-if="contSlide.image" insert-img="contSlide.image" insert-content="contSlide" alt='{{contSlide.title}}'/>
+	    <div class="carousel-caption">
+	          <h4 ng-if="contSlide.alias" class="carousel-caption">
+		      {{contSlide.alias}}
+		    </h4>
+		</div>
+    </slide>
+</carousel>
+
+
