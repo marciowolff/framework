@@ -1,0 +1,358 @@
+@base-color: #494949;
+@base-color2: #ffae00;
+@base-bg: #FFFFFF;
+@base-bg2: #004869;
+@base-bg2-hover: @base-bg2 + 100;
+@base-border: #DDDDDD;
+@base-color-link: #999;
+@base-color-link-hover: #FFF;
+@base-color-link2: #eea236;
+@base-color-link2-hover: @base-color-link2 + 30;
+@base-padding-content: 15px;
+
+/*BASE APP {INICIO}*/
+
+@icon-url: url('../images/sprite.png') no-repeat;
+
+@icon-width-catalogo: 150px;
+@icon-height-catalogo: 180px;
+@icon-bgPosition-catalogo: -218px -99px;
+
+@icon-width-indique: 180px;
+@icon-height-indique: 180px;
+@icon-bgPosition-indique: -381px -99px;
+
+@icon-width-cadastro: 277px;
+@icon-height-cadastro: 170px;
+@icon-bgPosition-cadastro: -598px -99px;
+
+@icon-width-ativo: 35px;
+@icon-height-ativo: 35px;
+@icon-bgPosition-ativo: 0 0;
+
+@icon-width-alerta: 25px;
+@icon-height-alerta: 25px;
+@icon-bgPosition-alerta: -116px 0;
+
+@icon-width-close: 35px;
+@icon-height-close: 35px;
+@icon-bgPosition-close: -60px 0;
+
+
+@list-color-title: @base-bg2;
+@list-transform-title: uppercase;
+@list-style-title: bold;
+@list-size-title: 16px;
+@list-size: 14px;
+
+/* BUTONS */
+@color-btn: @base-color;
+@padding-btn: 2px 10px;
+@textTransform-btn: uppercase;
+@borderRadius-btn: @box-borderRadius;
+
+@borderDefault: @base-border;
+
+
+@btnDefault-size: 14px;
+@btnDefault-color: #FFF;
+@btnDefault-bg: #f07100;
+@btnDefault-border: @boxPrimary-border;
+@btnDefault-color-active: @btnDefault-color;
+@btnDefault-border-active: @boxPrimary-border;
+
+@btnPrimary-size: 14px;
+@btnPrimary-color: #FFFFFF;
+@btnPrimary-bg: @content-bg-banner;
+@btnPrimary-border: @boxDefault-border;
+
+
+@btnSecondary-size: 18px;
+@btnSecondary-color: #FFFFFF;
+@btnSecondary-bg: #cc1b1b;
+@btnSecondary-border: 2px solid #cc1b1b;
+@btnSecondary-color-small: #efc400;
+@btnSecondary-color-icon: #efc400;
+
+@btnTertiary-size: 14px;
+@btnTertiary-color: @base-color;
+@btnTertiary-bg: #FFF;
+@btnTertiary-border: 1px solid @content-bg-paneldefault - 60;
+
+
+@carousel-img-loading: url('/assets/images/load.min.gif') center center no-repeat;
+@carousel-bg-arrow: @icon-url;
+@carousel-width-arrow: 23px;
+@carousel-height-arrow: 23px;
+@carousel-bgPostion-arrowLeft: -279px 0;
+@carousel-bgPostion-arrowRight: -320px 0;
+@carousel-padding-content: 20px 60px;
+
+/*FOOTER APP*/
+@footerApp-bg: #ececec;
+@footerApp-border: 1px solid #a8a8a8;
+@footerApp-color: #a8a8a8;
+@footerApp-padding: 10px 20px 20px;
+@footerApp-size: 12px;
+
+
+/*HEADER APP*/
+@headerApp-height: 85px;
+@headerApp-top-logo: 20px;
+@headerApp-left-logo: 0;
+@headerApp-bg-direction: top;
+@headerApp-bg-color1: #eaeaea 100%;
+@headerApp-bg-color2: #FFF 25%;
+@headerApp-border: 1px solid #eaeaea;
+@headerApp-borderImg: url('../images/border.png') top center no-repeat;
+@headerApp-borderImg-height: 6px;
+@headerApp-content-navApp: '.';
+@headerApp-content-navApp-size: 250%;
+@headerApp-content-navApp-position: 5px;
+@headerApp-color-navApp: #FFF;
+@headerApp-size-navApp: 16px;
+@headerApp-bg-navApp-link: transparent;
+@headerApp-padding-navApp-link: 5px 7px 5px 15px;
+@headerApp-style-navApp: none;
+@headerApp-textTransform-navApp: uppercase;
+@headerApp-color-navApp-active: #ffcc00;
+@headerApp-style-navApp-active: underline;
+@headerApp-bg-navApp-link-active: transparent;
+
+
+/*CONTENT APP*/
+@content-marginTop: 115px;
+@content-bg-banner: @base-bg2;
+@content-height-banner: 460px;
+@content-direction-effect-banner: top;
+@content-height-effect-banner: 50px;
+@content-bg1-effect-banner: #eaeaea 100%;
+@content-bg2-effect-banner: #FFF 25%;
+@content-borderImg-effect-banner: url('../images/border.png') top center no-repeat;
+@content-borderImg-effect-height-banner: 3px;
+@content-size-h1: 21px;
+@content-bg-paneldefault: #e9e9e9;
+
+	/*MENU LATERAL APP - DIMENSAO GERAL PARA TODAS AS TELAS*/
+	@menuLateral-width: 300px; 
+
+	/*BANNER APP  - DIMENSAO GERAL PARA TODAS AS TELAS*/
+	@bannerApp-width: 750px;
+	@bannerApp-padding: 0 34px 0 323px;
+	@bannerApp-color-title: #FFF;
+	@bannerApp-color-title-strong: #FFF;
+	@bannerApp-color-title-small: @base-color2;
+	@bannerApp-align-title: center;
+	@bannerApp-size-title: 16px;	
+	@bannerApp-color-text: #FFF;
+	@bannerApp-align-text: center;
+	@bannerApp-color-text-strong: @bannerApp-color-title-small;
+	@bannerApp-color-list: @bannerApp-color-text;
+	@bannerApp-align-list: @bannerApp-align-text;	
+	@bannerApp-color-list-strong: @bannerApp-color-text-strong;
+
+
+	@bannerApp-height-bannerDefault: 361px;
+	@bannerApp-content-height-bannerDefault: @content-height-banner;
+	@bannerApp-background-bannerDefault: url('../images/banners/index.png') left bottom no-repeat;
+	@bannerApp-margin-bannerDefault-title: 0 0 13px;
+	@bannerApp-margin-bannerDefault-btn: 20px 0 0 10px;
+
+	@bannerApp-background-bannerCatalogo: url('../images/banners/catalogo.png') center bottom no-repeat;
+	@bannerApp-height-bannerCatalogo: 315px;
+	@bannerApp-content-height-bannerCatalogo: 310px;
+	
+/*TABLE*/
+@table-color: #333;
+@table-color-title: @btnPrimary-bg;
+@table-size-title: 18px;
+@table-lineHeight-title: 32px;
+
+
+@table-width-footerTitle: 185px;
+@table-size-footerTitle: 24px; 
+@table-color-footerTitle: @btnPrimary-bg;
+@table-width-listBox: 450px;
+@table-width-listBox-li: 100%;
+@table-height-listBox-li: 50px;
+@table-width-listBox-item: 50%;
+@table-float-listBox-item: left;
+@table-size-listBox-li: 14px;
+
+
+@tablePrimary-bg-thead: @boxPrimary-background;
+@tablePrimary-color-thead: @boxPrimary-color-title;
+@tablePrimary-size-thead: 14px;
+@tablePrimary-bg-tbodyOdd: #FFF;
+@tablePrimary-bg-tbodyEven: transparent;
+@tablePrimary-bg-tfoot: @boxPrimary-background;
+@tablePrimary-color-tfoot: @boxPrimary-color-title;
+@tablePrimary-size-tfoot: 14px;
+
+
+@tableDefault-bg-thead: @btnPrimary-bg;
+@tableDefault-color-thead: @boxDefault-color-title;
+@tableDefault-size-thead: 14px;
+@tableDefault-bg-tbodyOdd: #FFF;
+@tableDefault-bg-tbodyEven: transparent;
+@tableDefault-bg-tfoot: transparent;
+@tableDefault-bg-tfoot: @btnPrimary-bg;
+@tableDefault-color-tfoot: @boxDefault-color-title;
+@tableDefault-size-tfoot: 14px;
+
+
+/*BOXS*/
+@box-padding: 10px 10px 15px;
+@box-margin: 0 0 25px 0;
+@box-background: @base-bg2;
+@box-backgroundOpacity: .3;
+@box-border: #000;
+@box-borderRadius: 5px;	
+
+@box-color-title: #FFF;
+@box-color-title-strong: @base-color2;
+@box-transform-title: uppercase;
+@box-style-title: bold;
+@box-size-title: 14px;
+
+@box-color-table: @box-color-title;
+@box-borderSpacing-table: 1px;
+@box-borderCollapse-table: separate;
+@box-background-tbodyTd: #116a97;
+@box-border-tbodyTd: 0 none;
+
+
+@box-padding-list: 10px;
+@box-color-list: #000;
+@box-size-list: 12px;
+@box-float-list: none;
+@box-size-listDestaq: 30px;
+@box-background-list: #FFF;
+@box-backgroundOpacity-list: .3;
+@box-borderRadius-list: 3px;
+@box-border-list-li: 1px dashed #000;
+@box-padding-list-li: 0; 
+@box-padding-list-item: 8px 0; 
+
+@box-background-fieldset: @box-background-list;
+@box-backgroundOpacity-fieldset: 0;
+@box-borderRadius-fieldset: @box-borderRadius-list;
+
+@box-size-form-login: 11px;
+
+@box-positionRight-btn: 10px;
+
+	/*@LIST BOX*/
+	@boxList-padding: 0;
+	@boxList-padding-li: 10px;
+ 	@boxList-float-li: left;
+ 	@boxList-float-item: none;
+	@boxList-color: #000;
+	@boxList-size: 12px;
+	@boxList-size-strong: 30px;
+	@boxList-color-strong: #000;
+	@boxList-margin-icon: 0 10px 0 0;
+
+
+	/*BOX EXTRATO*/
+	@boxDefault-padding: @box-padding;
+	@boxDefault-margin: @box-margin;
+	@boxDefault-background: @box-background;
+	@boxDefault-backgroundOpacity: 1;
+	@boxDefault-border: 2px solid #187fb2;
+	@boxDefault-borderRadius: @box-borderRadius;	
+	@boxDefault-color-title: @box-color-title;
+	@boxDefault-color: @box-color-title;
+	@box-transform-title: uppercase;
+	
+	@boxDefault-transform-title: @box-transform-title;
+	@boxDefault-style-title: @box-style-title;
+	@boxDefault-size-title: @box-size-title;
+
+	@boxDefault-borderSpacing-table: @box-borderSpacing-table;
+	@boxDefault-borderCollapse-table: @box-borderCollapse-table;
+	@boxDefault-background-tbodyTd: @box-background-tbodyTd;	
+
+	/*BOX INDICACOES*/
+	@boxPrimary-padding: @box-padding;
+	@boxPrimary-margin: @box-margin;
+	@boxPrimary-background: #ffcc00;
+	@boxPrimary-backgroundOpacity: 1;
+	@boxPrimary-border: 2px solid @base-color2;
+	@boxPrimary-borderRadius: @box-borderRadius;	
+
+	@boxPrimary-color-title: @base-color;
+	@boxPrimary-transform-title: @box-transform-title;
+	@boxPrimary-style-title: @box-style-title;
+	@boxPrimary-size-title: @box-size-title;
+
+	@boxPrimary-margin-icon: 0 10px 0 0;
+	
+	@boxPrimary-color-list: @boxPrimary-color-title;
+	@boxPrimary-size-list: @box-size-list;
+	@boxPrimary-size-listDestaq: @box-size-listDestaq;
+
+
+	/*BOX MAIN*/
+	@boxTertiary-padding: @box-padding;
+	@boxTertiary-margin: 0;
+	@boxTertiary-background: #fff;
+	@boxTertiary-backgroundOpacity: 1;
+	@boxTertiary-border: 2px solid @content-bg-paneldefault - 60;
+	@boxTertiary-borderRadius: @box-borderRadius;
+
+/*MODALS*/
+@modal-width-sm: 400px;
+@modal-width-md: 600px;
+@modal-width-lg: 900px;
+@modal-bg: @content-bg-paneldefault;
+@modal-border: 3px solid @content-bg-paneldefault - 30;
+@modal-borderRadius: 20px;
+@modal-padding: 10px;
+@modal-bg-backdrop: #000;
+@modal-size-title: 25px;
+@modal-letterSpacing-title: -2px;
+
+@modal-bg-footer: transparent;
+@modal-border-footer: transparent;
+@modal-color-footer: #000;
+@modal-align-footer: center;
+@modal-padding-footer: 0 0 20px;
+@modal-padding-body: 5px 15px 0;
+
+	/*INDIQUE*/
+	@modal-padding-indique: 40px 50px 0;
+	@modal-width-formLabelFirst: 145px;
+	@modal-positionTop-indiqueIcon: 150%;
+	@modal-positionLeft-indiqueIcon: 80%;
+
+/*PAGES*/
+	/*INDEX*/
+	@pagIndex-content-height-banner: @content-height-banner;
+	@pagIndex-width-content: 100%;
+	@pagIndex-float-content-box: left;
+	@pagIndex-margin-content-box: 20px 1% 0;
+	@pagIndex-padding-content-box: 10px 1%;
+	@pagIndex-backgroundOpacity-content-box: 0;
+	@pagIndex-borderRadius-content-box: 0;
+	@pagIndex-border-content-box: 1px dashed @base-color;	
+	@pagIndex-height-content-box-icon: 160px;
+	
+	@pagIndex-width-content-box-catalogo: 35%;
+	@pagIndex-padding-content-box-catalogo-title: 0 0 0 43%;
+	@pagIndex-width-content-box-indique: 36%;
+	@pagIndex-padding-content-box-indique-title: 0 0 0 49%;
+	@pagIndex-width-content-box-contato: 23%;
+	@pagIndex-padding-content-box-contato-title: 0;
+
+	/*LOGIN*/
+	@pageLogin-content-height-banner: @content-height-banner + @content-borderImg-effect-height-banner;
+
+	/*PROGRAMA*/
+	@pagPrograma-url-bannerImgRight: url('../images/banners/programa.png') bottom right no-repeat;
+	@pagPrograma-width-bannerImgRight: 290px;
+
+	/*CADASTRO*/
+	@pagCadastro-width-formLabelFirst: 145px;
+	@pagCadastro-positionLeft-icon: 75%;
+	@pagCadastro-positionBottom-icon: 30px;
