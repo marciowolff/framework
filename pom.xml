@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>hotsite</artifactId>
+	<packaging>war</packaging>
+	<description>Commarket HotSite Web</description>
+
+	<properties>
+		<maven.build.timestamp.format>dd-MM-yyyy HH:mm</maven.build.timestamp.format>
+		<build.timestamp>${maven.build.timestamp}</build.timestamp>
+	</properties>
+
+	<parent>
+		<groupId>br.com.w3style.front</groupId>
+		<artifactId>front</artifactId>
+		<version>1.0.4</version>
+	</parent>
+
+	<!-- Plugin para integração com o repositório -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>apache-repo</id>
+			<url>https://repository.apache.org/content/repositories/releases</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<finalName>${site.name}-${project.version}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4.3</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2.2</version>
+				<configuration>
+                    <finalName>${site.name}-${project.version}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+						<descriptor>src/main/assembly/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>deploy-install</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>		
+		</plugins>
+	</build>
+
+	<dependencies>
+	</dependencies>
+</project>
