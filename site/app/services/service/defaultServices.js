@@ -214,20 +214,41 @@ external.factory('defaultServices', ['$rootScope', '$resource', '$window', '$loc
             if (formValid.response.status == 'Ok') {
                 var dataSend = {};
                 //Diagramar data para envio correto
+
+                if(serviceSend.createNewobj){
+                    dataSend[serviceSend.createNewobj.name] = {};
+                }
                 for(var i = 0; i< formValid.response.content.length; i++){
                     var item = formValid.response.content[i];
 
                     var nameItem;
                     var value;
-                    //console.log('item', item)
+                    var insertNewObj = false;
+                    
                     angular.forEach(item, function(index, val){ 
-                        if(val == 'name'){nameItem = index};
-                        if(val == 'value'){value = index};
+                        (val == 'name' ? nameItem = index : '');
+                        (val == 'value' ? value = index : '');
                     });
 
-                    dataSend[nameItem] = value;
+                    if(serviceSend.createNewobj){
+                        for(var j=0; j<serviceSend.createNewobj.fields.length;j++){
+                            var field = serviceSend.createNewobj.fields[j];
+                            if(field == nameItem){
+                                insertNewObj = true;
+                                var newObj = dataSend[serviceSend.createNewobj.name];
+                                newObj[nameItem] = value;
+                            }
+                        }
+                        
+                        //INSERIR O CAMPO NO NOVO OBJETO E NA RAIZ DO ENVIO
+                        (serviceSend.createNewobj.duplicateObj ? insertNewObj = false : '');
+                    }
+
+                    if(!insertNewObj){
+                        dataSend[nameItem] = value;    
+                    }
                 }
-                
+
                 
                 
                 if(!btn.url && !btn.openmodal && !btn.msgIgnore){
@@ -1494,7 +1515,7 @@ external.factory('defaultServices', ['$rootScope', '$resource', '$window', '$loc
         captureFields: function(contentForm, novalid){
             var errorForm = false,
             formSend = [];
-
+            
             var insertFormSend = function(campo, valueCapture){
             	var campoThis;
             	campoThis = (valueCapture == 'lineValue' ? campo.lineValue : campo.value);

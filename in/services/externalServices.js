@@ -1026,7 +1026,32 @@ external.constant("servicesConfig", {
                             {name: 'save', title: 'Confirmar', saveAfterForm: true, issaveform:true, visibled: true, classe: 'btn-primary', url: 'resgatefinish', openmodal:true,
                                 service: {
                                     //send: {notsave: true, saveparameter: ['all']},
-                                    send: {url: 'finalizaresgate/save/', parameter: 'idUsuario', personreload: true},
+                                    send: {url: 'finalizaresgate/save/', parameter: 'idUsuario', personreload: true, 
+                                        createNewobj: {name: 'toformulario', duplicateObj: false, fields: [
+                                            'cartaoBairro', 
+                                            'cartaoCelular', 
+                                            'cartaoCep', 
+                                            'cartaoCidade', 
+                                            'cartaoComp', 
+                                            'cartaoCpf', 
+                                            'cartaoDatanascimento', 
+                                            'cartaoEmail', 
+                                            'cartaoEstadocivil', 
+                                            'cartaoEstadouf', 
+                                            'cartaoLogradouro', 
+                                            'cartaoNacionalidade', 
+                                            'cartaoNaturalidade', 
+                                            'cartaoNome', 
+                                            'cartaoNomeMae', 
+                                            'cartaoNomePai', 
+                                            'cartaoNumero', 
+                                            'cartaoOrgaoexpedidor', 
+                                            'cartaoPais', 
+                                            'cartaoRg', 
+                                            'cartaoSexo', 
+                                            'cartaoTelefoneResidencial'
+                                        ]}
+                                    },
                                 },
                             },
                         ],
@@ -2297,29 +2322,6 @@ external.constant("servicesConfig", {
                                                             {nameTpl: 'input', type: 'hidden', name:'codpremio', id: 'codpremio', savetype: 'number', required: false, size: 0, inputSize: 0, labelSize: 0},
                                                             {nameTpl: 'input', type: 'hidden', name:'pergunta', id: 'pergunta', required: false, size: 0, inputSize: 0, labelSize: 0},
                                                             {nameTpl: 'select', type: 'select', name:'cartao_pre_pago', id: 'cartao_pre_pago', savetype: 'number', addParamsResult: true, /*interaction: true,*/ size: 12, inputSize: 7, labelSize: 5,
-                                                                clearResult: {event: 'change', fields: ['taxa_resgate', 'disponivel', 'saldo_atual']},
-                                                                service: {
-                                                                   events: [
-                                                                        {objresult: 'load', event: 'change', edit: true, //errordefault: true, 
-                                                                            urls: [
-                                                                                {url: 'saldodisponivel/find/', parameter: 'idUsuario'},
-                                                                                {url: '/conta/', parameterform: true, parameter: 'cartao_pre_pago'},
-                                                                                {url: '/premio/', parameterform: true, parameter: 'codpremio'},
-                                                                                {url: '/tipopremio/', parameterform: true, parameter: 'tipoPremio'},
-                                                                                {url: '/condicao/', parameterform: true, parameter: 'condicao'},
-                                                                                {url: '/catalogo/', parameterform: true, parameter: 'catalogo'},
-                                                                            ]
-                                                                        },
-                                                                    ]                                                                                                                                            
-                                                                },
-                                                            },
-                                                        ]
-                                                    },
-                                                    {
-                                                        style: 'inline col-md-7',
-                                                        campos: [
-                                                            {nameTpl: 'select', type: 'select', name:'conta_corrente', id: 'conta_corrente', savetype: 'number', addParamsResult: true, /*interaction: true,*/ size: 12, inputSize: 7, labelSize: 5,
-                                                                obs: 'Dados incorretos? <a href="{dadoscredito}">Clique aqui</a> para corrigir.', obsSize: 12, obsLabelSize:5,
                                                                 /*service: {
                                                                    events: [
                                                                         {objresult: 'load', event: 'change', edit: true, //errordefault: true, 
@@ -2330,6 +2332,29 @@ external.constant("servicesConfig", {
                                                                         },
                                                                     ]                                                                                                                                            
                                                                 },*/
+                                                            },
+                                                        ]
+                                                    },
+                                                    {
+                                                        style: 'inline col-md-7',
+                                                        campos: [
+                                                            {nameTpl: 'select', type: 'select', name:'conta_corrente', id: 'conta_corrente', savetype: 'number', addParamsResult: true, /*interaction: true,*/ size: 12, inputSize: 7, labelSize: 5,
+                                                                obs: 'Dados incorretos? <a href="{dadoscredito}">Clique aqui</a> para corrigir.', obsSize: 12, obsLabelSize:5,
+                                                                clearResult: {event: 'change', fields: ['taxa_resgate', 'disponivel', 'saldo_atual']},
+                                                                service: {
+                                                                   events: [
+                                                                        {objresult: 'load', event: 'change', edit: true, //errordefault: true, 
+                                                                            urls: [
+                                                                                {url: 'saldodisponivel/find/', parameter: 'idUsuario'},
+                                                                                {url: '/conta/', parameterform: true, parameter: 'conta_corrente'},
+                                                                                {url: '/premio/', parameterform: true, parameter: 'codpremio'},
+                                                                                {url: '/tipopremio/', parameterform: true, parameter: 'tipoPremio'},
+                                                                                {url: '/condicao/', parameterform: true, parameter: 'condicao'},
+                                                                                {url: '/catalogo/', parameterform: true, parameter: 'catalogo'},
+                                                                            ]
+                                                                        },
+                                                                    ]
+                                                                }
                                                             },                                                            
                                                         ]
                                                     },
